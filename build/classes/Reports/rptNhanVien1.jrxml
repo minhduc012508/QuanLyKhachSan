@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="750" pageHeight="842" columnWidth="710" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="888985b8-7e65-4da0-8e05-19a068158e1e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="212454bb-299a-4d5c-9aba-848959b50882">
+		<queryString language="SQL">
+			<![CDATA[select * from nhanvien]]>
+		</queryString>
+		<field name="MANV" class="java.lang.String"/>
+		<field name="TENNV" class="java.lang.String"/>
+		<field name="CHUCVU" class="java.lang.String"/>
+		<field name="LUONGNV" class="java.lang.Double"/>
+		<field name="NGAYSINH" class="java.sql.Date"/>
+		<field name="GIOITINH" class="java.lang.String"/>
+		<field name="CHUTHICH" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[select * from nhanvien]]>
+	</queryString>
+	<field name="MANV" class="java.lang.String"/>
+	<field name="TENNV" class="java.lang.String"/>
+	<field name="CHUCVU" class="java.lang.String"/>
+	<field name="LUONGNV" class="java.lang.Double"/>
+	<field name="NGAYSINH" class="java.sql.Date"/>
+	<field name="GIOITINH" class="java.lang.String"/>
+	<field name="CHUTHICH" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="249" y="20" width="232" height="59" uuid="ff65a85c-19f0-4a0b-a57c-91cddada0bba"/>
+				<textElement>
+					<font fontName="Constantia" size="24"/>
+				</textElement>
+				<text><![CDATA[Danh sách nhân viên]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="65" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="0" width="710" height="65" uuid="fc58ba4e-8a05-484e-abae-7916841f8cef"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="d281329d-fac6-4e37-b5e4-55eb07651979">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="5a799705-28ed-466e-89fd-c1724ae06258">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="5f3f0f64-e78b-4df0-832c-8f7dc7fc9f8e"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<text><![CDATA[Mã nhân viên]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="02d88189-2190-451f-b546-c4381e02818f"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{MANV}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="78118688-a8c2-4d7c-b6fd-bb4dbe1b45de">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="d2690820-d85c-46b0-8286-860f88ec650c"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<text><![CDATA[Tên nhân viên]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="c3039f5f-7821-401d-97ff-3c4c525537f7"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{TENNV}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="ad8aa8e5-ea63-4a19-8293-d23faf5dae3b">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="e29e7745-4263-4225-b467-2cd5edf640c0"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<text><![CDATA[Chức vụ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="5d3e31b6-51de-44d3-8b55-fa6700d423d5"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{CHUCVU}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="111" uuid="5942c9f9-6c76-465d-ad60-2794d789d7bf">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="502f5807-a051-4465-8693-d196e7e8a344"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<text><![CDATA[Lương nhân viên]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="7d00969e-f36f-4e6b-9be8-14f672bd3bc5"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{LUONGNV}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="99" uuid="f999c4c3-030a-4576-8561-2cf5494ec3be">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="1cdce448-398c-4ae4-babf-469e91d2446e"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<text><![CDATA[Ngày sinh]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="90f7c4f5-3e43-419b-9ddf-b6d6de9e1569"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{NGAYSINH}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="73" uuid="6fc9477a-9f81-4a0a-af17-9bd813add330">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="73" height="30" uuid="e302d6fd-302b-4551-bd6e-7bda5f7f7cfe"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<text><![CDATA[Giới tính]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="73" height="20" uuid="ef9578a8-0955-4b39-bf91-a734c9ce29fd"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{GIOITINH}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="155" uuid="b72bb347-4874-4b5d-bfe5-0282cd3ed9e4">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="155" height="30" uuid="a0d1b93c-3ca5-4313-b445-baaeb5a1311a"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<text><![CDATA[Chú thích]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="155" height="20" uuid="1e4eeaca-3805-4459-9006-954ecc79b327"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{CHUTHICH}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="275" y="14" width="80" height="20" uuid="11944e55-0619-409f-bd96-3ef9037eeacf"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="355" y="14" width="40" height="20" uuid="06c88ea8-c51c-4d24-899a-101e37295b58"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

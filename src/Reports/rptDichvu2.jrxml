@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="262d6be5-b036-4671-89d6-bf3d02d0eb1d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="8ab6f3ba-613f-439b-bd8a-5079a57d2770">
+		<queryString language="SQL">
+			<![CDATA[select * from dichvu]]>
+		</queryString>
+		<field name="MADV" class="java.lang.String"/>
+		<field name="TENDV" class="java.lang.String"/>
+		<field name="GIADV" class="java.lang.Double"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT MADV, TENDV, GIADV
+FROM     dbo.dichvu]]>
+	</queryString>
+	<field name="MADV" class="java.lang.String"/>
+	<field name="TENDV" class="java.lang.String"/>
+	<field name="GIADV" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<staticText>
+				<reportElement x="147" y="26" width="277" height="53" uuid="dbcf9fc5-dcf8-49c3-ae28-eadbcf9cbd54"/>
+				<textElement>
+					<font fontName="Constantia" size="24"/>
+				</textElement>
+				<text><![CDATA[Danh sách dịch vụ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="18" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="98" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="0" y="0" width="555" height="55" uuid="efc160da-dcc4-4a30-8483-7a2bca1d3093"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset 1" uuid="27973003-5140-4736-b5fe-d3a8bc96680f">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="174" uuid="c5ae1834-188d-4397-8c13-c41e611ab171">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="7c6ae0cc-7239-48c5-a2bc-7e98c5e81b34"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<text><![CDATA[Mã dịch vụ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="d5e10e5d-dd56-4533-b02f-304e3b028bc3"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{MADV}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="193" uuid="eddc8925-8daa-4455-b3b2-9f12548ed0e6">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="849ca20f-c6b0-4ed2-bf08-ed538486555a"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<text><![CDATA[Giá dịch vụ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="6ca4f363-3047-460e-9ddd-c13b6d1edcf9"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{TENDV}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="187" uuid="ea8eea05-21dd-4182-9a0d-cb44949fdade">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="95c230bc-0d71-4f7c-9fc7-6e345566ca83"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<text><![CDATA[Tên dịch vụ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="8c7c4098-0be1-4281-899d-f9cc4dadb453"/>
+								<textElement>
+									<font fontName="Constantia"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{GIADV}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="220" y="16" width="80" height="20" uuid="de59f639-6563-4e85-8ce3-fa3af8084aeb"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="300" y="16" width="40" height="20" uuid="144ceed9-fc27-49b0-a96f-9910c437a929"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="650" pageHeight="842" columnWidth="610" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f2cbbae5-47d7-41f4-88a3-fb80f1bec9b8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="sMAPHONG" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from phong
+where MAPHONG = $P{sMAPHONG}]]>
+	</queryString>
+	<field name="MAPHONG" class="java.lang.String"/>
+	<field name="TENPHONG" class="java.lang.String"/>
+	<field name="LOAIPHONG" class="java.lang.String"/>
+	<field name="GIAPHONG" class="java.lang.Double"/>
+	<field name="CHUTHICH" class="java.lang.String"/>
+	<field name="TINHTRANG" class="java.lang.String"/>
+	<field name="MANV" class="java.lang.String"/>
+	<field name="MADV" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="217" y="17" width="187" height="37" uuid="27e771b3-878e-45d6-a126-73f3c78a3dbd"/>
+				<textElement>
+					<font fontName="Constantia" size="24"/>
+				</textElement>
+				<text><![CDATA[Chi tiết phòng]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="95" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="66386feb-e22a-4a0b-b195-cb4f809d5d0c"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<text><![CDATA[Mã phòng]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="75f0786b-b905-4197-a5e9-2270c4794e83"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MAPHONG}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="36" width="100" height="20" uuid="90de9937-a841-44f0-85ea-fb308982d1cc"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<text><![CDATA[Tên phòng]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="36" width="100" height="20" uuid="f39d67a2-4698-4cdc-8de5-0ca3508b6fda"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TENPHONG}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="71" width="100" height="20" uuid="09e8366c-5227-4a41-b293-c9d39d108cfd"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<text><![CDATA[Loại phòng]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="71" width="100" height="20" uuid="07d4458a-e012-4516-9c87-3b11069348c3"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LOAIPHONG}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="232" y="0" width="100" height="20" uuid="78a16e7f-ad38-4d6a-bcdb-97ce0daae620"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<text><![CDATA[GIá phòng]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="332" y="0" width="100" height="20" uuid="65a3e5e0-3ab7-4577-8f20-33ad9dd5fd59"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GIAPHONG}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="232" y="36" width="100" height="20" uuid="d20d4726-96b2-4eaf-ab7d-37e9b37185f1"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<text><![CDATA[Chú thích]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="332" y="36" width="100" height="20" uuid="ea71700c-696c-463f-81a5-73aed2e3738a"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CHUTHICH}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="232" y="71" width="100" height="20" uuid="7c5e7a02-9819-440d-a925-64bbd5b89793"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<text><![CDATA[Tình trạng]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="332" y="71" width="100" height="20" uuid="a44cece8-d818-42ad-ba6d-66c75e047b2a"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TINHTRANG}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="463" y="0" width="58" height="20" uuid="6f2fac18-7022-404c-aeff-bb39260b11bf"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<text><![CDATA[Mã NV]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="521" y="0" width="89" height="20" uuid="5723e82e-8925-4762-96a6-338aab63803b"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MANV}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="463" y="36" width="58" height="20" uuid="1daa79a7-a243-43cd-902a-5462ea293680"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<text><![CDATA[Mã DV]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="521" y="36" width="89" height="20" uuid="e0f50c84-4198-4916-b455-63fde328ae75"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MADV}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="33" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

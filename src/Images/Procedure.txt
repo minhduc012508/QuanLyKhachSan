@@ -1,0 +1,121 @@
+--1.Xây dựng thủ tục tính SL đặt hàng DonDH_TinhSLDat với 2 tham số vào là SoHD, MaSP 
+--và 1 tham số ra là SL đặt của mỗi sản phẩm trong 1 số đặt hàng :
+CREATE PROCEDURE DonDH_TinhSLDat
+@So NVARCHAR(20),
+@Ma NVARCHAR(20),
+@SL INT OUTPUT
+AS
+SELECT @SL = SLDat 
+FROM CTDONDH
+WHERE SoDH = @So AND MaSP = @Ma
+GO
+DECLARE @Ra INT 
+EXECUTE DonDH_TinhSLDat 'DH001','BC01',@Ra OUTPUT
+PRINT @Ra
+SELECT * FROM CTDONDH
+
+--2.Xây dựng thủ tục tính tổng số lượng đã nhập hàng với 2 tham số vào là SoPN, MaSP 
+--và 1 tham số là ra là Tổng số lượng hàng của một vật tư trong một số đặt hàng 
+CREATE PROCEDURE PNHAP_TinhTongSLNHang
+@PN NVARCHAR(20),
+@Ma NVARCHAR(20),
+@Tong INT OUTPUT
+AS 
+SELECT @Tong =SUM(SLNhap)
+FROM CTPNHAP
+WHERE SoPN = @PN AND MaSP = @Ma
+GO
+DECLARE @Ra INT 
+EXECUTE PNHAP_TinhTongSLNHang 'PN001','BC01',@Ra OUTPUT
+PRINT @Ra
+SELECT * FROM CTPNHAP
+
+--3.Xây dựng thủ tục tính số lượng tồn kho cuối kỳ
+--với 2 tham số vào là NamThang, MaSP và 1 tham số ra là số lượng cuối kỳ của một sản phẩm trong năm tháng truyền vào
+CREATE PROCEDURE TonKho_TinhTonCuoi 
+@NT CHAR(6),
+@Ma NVARCHAR(20),
+@SLC INT OUTPUT
+AS
+SELECT @SLC = SLCuoi
+FROM TONKHO
+WHERE NamThang = @NT AND MaSP = @Ma
+GO
+DECLARE @Ra INT
+EXECUTE TonKho_TinhTonCuoi '200201','VD01',@Ra OUTPUT
+PRINT @Ra
+SELECT * FROM TONKHO
+
+--4.Xây dựng thủ tục thêm dữ liệu vào bảng SANPHAM với 4 tham số vào chính là MaSP, TenSP, DVTinh, PhanTram (MaSP phải duy nhất).
+--Kiểm tra ràng buộc dữ liệu phải hợp lệ trước khi thực hiện INSERT 
+CREATE PROCEDURE SANPHAM_Them 
+@Ma NVARCHAR(20),
+@Ten NVARCHAR(100),
+@DVT NVARCHAR(10),
+@NSX NVARCHAR(40),
+@GIA MONEY
+AS
+IF EXISTS(SELECT*FROM SANPHAM WHERE MaSP = @Ma)
+BEGIN 
+PRINT 'Ma san pham bi trung'
+RETURN
+END
+INSERT INTO SANPHAM VALUES(@Ma ,@Ten ,@DVT ,@NSX, @GIA)
+GO
+SELECT * FROM SANPHAM
+EXECUTE SANPHAM_Them 'CC01','COC CAM BUT DE BAN','CAI','TRUNG QUOC', 12000
+EXECUTE SANPHAM_Them 'CC02','LOT CHUOT MAY TINH','Cai','TRUNGQUOC',25000
+
+--5.Xây dựng thủ tục xoá 1 sản phẩm có trong bảng SANPHAM với tham số vào chính là MaSP cần xoá 
+--(MaSP phải chưa có trong CTDONDH,CTHD,TONKHO). Kiểm tra ràng buộc dữ liệu trước khi thực hiện lệnh DELETE:
+CREATE PROCEDURE SANPHAM_Xoa
+@MaV NVARCHAR(20)
+AS
+IF EXISTS (SELECT * FROM CTDONDH WHERE MaSP = @MaV)
+BEGIN 
+PRINT 'Khong xoa duoc vi ma san pham nay co trong CTDONDH'
+RETURN
+END
+IF EXISTS (SELECT * FROM CTPNHAP WHERE MaSP = @MaV)
+BEGIN 
+PRINT 'Khong xoa duoc vi ma san pham nay co trong CTPNHAP'
+RETURN
+END
+IF EXISTS (SELECT * FROM CTHD WHERE MaSP = @MaV)
+BEGIN 
+PRINT 'Khong xoa duoc vi ma san pham nay co trong CTHD'
+RETURN
+END
+IF EXISTS (SELECT * FROM TONKHO WHERE MaSP = @MaV)
+BEGIN 
+PRINT 'Khong xoa duoc vi ma san pham nay co trong TONKHO'
+RETURN
+END
+DELETE FROM SANPHAM WHERE MaSP = @MaV
+EXECUTE SANPHAM_Xoa 'BB01'
+
+--6.Xây dựng thủ tục sửa đổi sản phẩm trong bảng SANPHAM với 5 tham số vào chính là giá trị cần thay đổi của các cột
+--trong bảng SANPHAM. Thủ tục chỉ cần thực hiện lệnh UPDATE SET với các giá trị tương ứng 
+CREATE PROCEDURE SANPHAM_Sua
+@MaV NVARCHAR(20),
+@TenV NVARCHAR(100),
+@DVT NVARCHAR(10),
+@NSX NVARCHAR(40),
+@GIA MONEY
+AS
+UPDATE SANPHAM 
+SET TenSP = @TenV,DonVi = @DVT,NUOCSX = @NSX, GIA = @GIA
+WHERE MaSP = @MaV
+EXECUTE SANPHAM_Sua 'CC01','COC CAM BUT NHUA','CHIEC','TRUNG QUOC',12000
+SELECT * FROM SANPHAM
+
+--7.Xây dựng thủ tục liệt kê các cột dữ liệu trong bảng SANPHAM 
+--Thủ tục này không có tham số. Hành động duy nhất là câu lệnh truy vấn SELECT * FROM SANPHAM sắp xếp với TenSP tăng dần :
+SELECT * FROM SANPHAM
+CREATE PROCEDURE SANPHAM_BCDSach
+AS
+SELECT *
+FROM SANPHAM 
+ORDER BY TenSP
+GO
+EXECUTE SANPHAM_BCDSach

@@ -1,0 +1,43 @@
+---11 Tạo View Tổng Hợp Thông Tin Về Các Mặt Hàng Không Bán Được Trong Tháng 1 Năm 2021
+CREATE VIEW VWHANGCHUABANDUOC
+AS
+SELECT *
+FROM SANPHAM
+WHERE MaSP NOT IN ( SELECT MaSP
+                   FROM CTHD
+                   WHERE SoHD IN (SELECT SoHD
+                                  FROM HOADON
+                                  WHERE MONTH(NGHD) = 1 AND YEAR(NGHD) = 2021
+                                  )
+                  )
+
+Select * from VWHANGCHUABANDUOC
+
+---12 Tạo View Tổng Hợp Thông Tin Về Các Mặt Hàng Đã Được Bán Trong Ngày Mùng 17/01/2021
+CREATE VIEW VWHANGDUOCBAN_170121
+AS
+SELECT *
+FROM SANPHAM
+WHERE MaSP IN ( SELECT MaSP
+               FROM CTHD
+               WHERE SOHD IN ( SELECT SOHD
+                               FROM HOADON
+                               WHERE DAY(NGHD )='17'
+                               AND MONTH(NGHD)='01'
+                               AND YEAR(NGHD)='2021'
+                              )
+              )
+SELECT * FROM VWHANGDUOCBAN_170121
+
+---13 Tổng Hợp Thông Tin Về Các Khách Hàng Đã Từng Mua Các Mặt Hàng Được Sản Xuất Tại SINGAPORE 
+CREATE VIEW VWKHACHMUAHANGSING
+AS
+SELECT *
+FROM KHACHHANG
+WHERE MAKH IN ( SELECT MAKH
+		FROM SANPHAM, CTHD
+		WHERE SANPHAM.MaSP = CTHD.MaSP
+                AND SANPHAM.NUOCSX='SINGAPORE'
+		)
+
+SELECT * FROM VWKHACHMUAHANGSING

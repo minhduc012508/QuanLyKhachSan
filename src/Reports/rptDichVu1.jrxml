@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d0bdda54-c833-473a-879b-00cf789e7f24">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="f609e2d7-ca8e-42d5-88c0-a34f643afcdd">
+		<queryString language="SQL">
+			<![CDATA[select * from dichvu]]>
+		</queryString>
+		<field name="MADV" class="java.lang.String"/>
+		<field name="TENDV" class="java.lang.String"/>
+		<field name="GIADV" class="java.lang.Double"/>
+	</subDataset>
+	<subDataset name="New Dataset 2" uuid="02371ad4-9ad9-41d2-8778-7875bf5f6ad2">
+		<queryString language="SQL">
+			<![CDATA[select * from dichvu]]>
+		</queryString>
+		<field name="MADV" class="java.lang.String"/>
+		<field name="TENDV" class="java.lang.String"/>
+		<field name="GIADV" class="java.lang.Double"/>
+	</subDataset>
+	<parameter name="sMADV" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT MADV, TENDV, GIADV
+FROM     dbo.dichvu
+where MADV = $P{sMADV}]]>
+	</queryString>
+	<field name="MADV" class="java.lang.String"/>
+	<field name="TENDV" class="java.lang.String"/>
+	<field name="GIADV" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="177" y="14" width="277" height="53" uuid="2eaff69b-32cc-4085-b52c-1148a0b2911a"/>
+				<textElement>
+					<font fontName="Constantia" size="24"/>
+				</textElement>
+				<text><![CDATA[Chi tiết dịch vụ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="51" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="64" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="e21f7285-f48f-429d-8c86-9c44f586b4b8"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<text><![CDATA[Mã dịch vụ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="6cd8a0c5-b1d6-4784-af62-9fdec96aec62"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MADV}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="44" width="100" height="20" uuid="31a8f552-83f2-4096-abd2-e1a8acdea71c"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<text><![CDATA[Tên dịch vụ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="44" width="100" height="20" uuid="19cd0f59-47f1-4ccf-8772-275a7d028a55"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TENDV}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="20" uuid="c0c9d0cd-96c3-432d-a1a6-79b407bb0089"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<text><![CDATA[Giá dịch vụ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="6e78024c-ab8f-4570-9b47-d5e365ab4253"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GIADV}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="59" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="200" y="0" width="80" height="20" uuid="17a94645-54a7-4f51-9a4c-8e5ec67dca2b"/>
+				<textElement textAlignment="Right">
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="300" y="0" width="40" height="20" uuid="c663e082-e675-47c4-88fd-37d4deca714d"/>
+				<textElement>
+					<font fontName="Constantia"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
